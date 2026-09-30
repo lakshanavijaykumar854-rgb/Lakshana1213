@@ -1,1 +1,96 @@
+class Student {
+    private String name;
+    private int rollNo;
+    private int marks;
+
+    Student() {
+        name = "";
+        rollNo = 0;
+        marks = 0;
+    }
+
+    Student(String name, int rollNo, int marks) {
+        this.name = name;
+        this.rollNo = rollNo;
+        this.marks = marks;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getRollNo() {
+        return rollNo;
+    }
+
+    public int getMarks() {
+        return marks;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setRollNo(int rollNo) {
+        this.rollNo = rollNo;
+    }
+
+    public void setMarks(int marks) {
+        this.marks = marks;
+    }
+
+    public String calculateGrade() {
+        return "Grade not assigned";
+    }
+
+    public void displayDetails() {
+        System.out.println("Student Name: " + name);
+        System.out.println("Roll Number: " + rollNo);
+        System.out.println("Marks: " + marks);
+        System.out.println("Grade: " + calculateGrade());
+    }
+}
+
+class Result extends Student {
+
+    Result(String name, int rollNo, int marks) {
+        super(name, rollNo, marks);
+    }
+
+    @Override
+    public String calculateGrade() {
+        int marks = getMarks();
+
+        if (marks >= 90)
+            return "A+";
+        else if (marks >= 80)
+            return "A";
+        else if (marks >= 70)
+            return "B";
+        else if (marks >= 60)
+            return "C";
+        else if (marks >= 50)
+            return "D";
+        else
+            return "F";
+    }
+}
+
+public class StudentManagement {
+
+    public static void main(String[] args) {
+
+        Result s1 = new Result("Lakshana", 101, 99);
+        Result s2 = new Result("Mithra", 102, 85);
+        Result s3 = new Result("Mithun", 103, 65);
+
+        s1.displayDetails();
+        System.out.println("---------------");
+
+        s2.displayDetails();
+        System.out.println("---------------");
+
+        s3.displayDetails();
+    }
+}
 
